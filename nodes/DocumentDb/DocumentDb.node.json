@@ -1,0 +1,14 @@
+{
+	"node": "n8n-nodes-documentdb.documentDb",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Data & Storage", "Development"],
+	"resources": {
+		"credentialDocumentation": [
+			{ "url": "https://learn.microsoft.com/en-us/azure/documentdb/how-to-connect-drivers" }
+		],
+		"primaryDocumentation": [
+			{ "url": "https://github.com/documentdb/n8n-nodes-documentdb#readme" }
+		]
+	}
+}

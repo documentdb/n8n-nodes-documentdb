@@ -1,3 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.n8n/
+.env
+
 # Logs
 logs
 *.log

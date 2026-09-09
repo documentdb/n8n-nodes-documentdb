@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: npm
+      - run: npm ci
+      - name: Configure npm token fallback
+        if: ${{ secrets.NPM_TOKEN != '' }}
+        run: npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Release with trusted publishing
+        if: ${{ secrets.NPM_TOKEN == '' }}
+        run: npm run release
+      - name: Release with npm token
+        if: ${{ secrets.NPM_TOKEN != '' }}
+        run: npm run release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
