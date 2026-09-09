@@ -1,0 +1,61 @@
+{
+	"name": "n8n-nodes-documentdb",
+	"version": "0.1.0",
+	"description": "n8n community node for Azure DocumentDB and compatible DocumentDB deployments",
+	"license": "MIT",
+	"homepage": "https://github.com/documentdb/n8n-nodes-documentdb#readme",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"documentdb",
+		"azure-documentdb"
+	],
+	"author": {
+		"name": "DocumentDB",
+		"email": "nair.sandeep@microsoft.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/documentdb/n8n-nodes-documentdb.git"
+	},
+	"bugs": {
+		"url": "https://github.com/documentdb/n8n-nodes-documentdb/issues"
+	},
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"scripts": {
+		"build": "n8n-node build && esbuild nodes/DocumentDb/DocumentDb.node.ts --bundle --platform=node --format=cjs --target=node22 --external:n8n-workflow --sourcemap --outfile=dist/nodes/DocumentDb/DocumentDb.node.js",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"test:e2e": "node test/e2e.mjs",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/DocumentDbApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/DocumentDb/DocumentDb.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "0.47.0",
+		"esbuild": "0.28.2",
+		"eslint": "9.39.4",
+		"mongodb": "7.6.0",
+		"prettier": "3.8.3",
+		"typescript": "5.9.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
