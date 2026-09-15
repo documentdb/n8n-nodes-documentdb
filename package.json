@@ -21,6 +21,9 @@
 	"bugs": {
 		"url": "https://github.com/documentdb/n8n-nodes-documentdb/issues"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"engines": {
 		"node": ">=22.0.0"
 	},
