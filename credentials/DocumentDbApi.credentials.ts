@@ -1,4 +1,4 @@
-import type { Icon, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { Icon, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
 
 export class DocumentDbApi implements ICredentialType {
 	name = 'documentDbApi';
@@ -11,6 +11,9 @@ export class DocumentDbApi implements ICredentialType {
 	};
 
 	documentationUrl = 'https://learn.microsoft.com/en-us/azure/documentdb/how-to-connect-drivers';
+
+	// DocumentDB requires the node-level MongoDB ping referenced by testedBy.
+	test: ICredentialTestRequest | undefined = undefined;
 
 	properties: INodeProperties[] = [
 		{
